@@ -5,7 +5,7 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package com.example.demo.service.impl;
+package com.example.demo.client.sayhello;
 
 public class DemoServiceImplServiceLocator extends org.apache.axis.client.Service implements DemoServiceImplService {
 
@@ -39,7 +39,7 @@ public class DemoServiceImplServiceLocator extends org.apache.axis.client.Servic
         DemoServiceImplPortWSDDServiceName = name;
     }
 
-    public com.example.demo.service.DemoService getDemoServiceImplPort() throws javax.xml.rpc.ServiceException {
+    public DemoService getDemoServiceImplPort() throws javax.xml.rpc.ServiceException {
        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(DemoServiceImplPort_address);
@@ -50,9 +50,9 @@ public class DemoServiceImplServiceLocator extends org.apache.axis.client.Servic
         return getDemoServiceImplPort(endpoint);
     }
 
-    public com.example.demo.service.DemoService getDemoServiceImplPort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
+    public DemoService getDemoServiceImplPort(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         try {
-            com.example.demo.service.impl.DemoServiceImplServiceSoapBindingStub _stub = new com.example.demo.service.impl.DemoServiceImplServiceSoapBindingStub(portAddress, this);
+            DemoServiceImplServiceSoapBindingStub _stub = new DemoServiceImplServiceSoapBindingStub(portAddress, this);
             _stub.setPortName(getDemoServiceImplPortWSDDServiceName());
             return _stub;
         }
@@ -72,8 +72,8 @@ public class DemoServiceImplServiceLocator extends org.apache.axis.client.Servic
      */
     public java.rmi.Remote getPort(Class serviceEndpointInterface) throws javax.xml.rpc.ServiceException {
         try {
-            if (com.example.demo.service.DemoService.class.isAssignableFrom(serviceEndpointInterface)) {
-                com.example.demo.service.impl.DemoServiceImplServiceSoapBindingStub _stub = new com.example.demo.service.impl.DemoServiceImplServiceSoapBindingStub(new java.net.URL(DemoServiceImplPort_address), this);
+            if (DemoService.class.isAssignableFrom(serviceEndpointInterface)) {
+                DemoServiceImplServiceSoapBindingStub _stub = new DemoServiceImplServiceSoapBindingStub(new java.net.URL(DemoServiceImplPort_address), this);
                 _stub.setPortName(getDemoServiceImplPortWSDDServiceName());
                 return _stub;
             }
